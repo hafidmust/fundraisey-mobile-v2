@@ -1,8 +1,13 @@
 package com.hafidmust.fundraisey_v2.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
+import com.hafidmust.fundraisey_v2.MainActivity
 import com.hafidmust.fundraisey_v2.data.request.LoginRequest
 import com.hafidmust.fundraisey_v2.data.response.LoginResponse
 import com.hafidmust.fundraisey_v2.data.retrofit.ApiConfig
@@ -14,46 +19,33 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var viewModel : LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
 
-            login(email, password)
+            viewModel.login(email,password)
+        }
+
+        //to Main Activity / dashboard
+        toMain()
+    }
+
+    private fun toMain() {
+        viewModel.successLoading.observe(this) { loginSucces ->
+            if (loginSucces) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
-    private fun login(email: String, password: String) {
-        //loading
-        val client = ApiConfig.getApiService().login(
-            LoginRequest(
-                email = email,
-                password = password,
-                grantType = "password",
-                clientId = "client-web",
-                clientSecret = "password"
-            )
-        )
-        client.enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                val data = response.body()
-                if (data?.status == 200){
-                    //berhasil
-                    data.data.accessToken.let { Log.d("login berhasil", it) }
-                }else if (data?.status == 400){
-                    //message error
-                    Log.e("login gagal response : ", data.message)
-                }
-            }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e("login onFailure : ", t.message.toString())
-            }
-        })
-    }
 }
