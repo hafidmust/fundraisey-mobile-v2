@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/round_home_24"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/portfolioFragment"
+        android:icon="@drawable/round_bar_chart_24"
+        android:title="@string/portfolio" />
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/round_history_24"
+        android:title="@string/history" />
+    <item
+        android:id="@+id/informationFragment"
+        android:icon="@drawable/round_info_24"
+        android:title="@string/information" />
+
+
+</menu>
