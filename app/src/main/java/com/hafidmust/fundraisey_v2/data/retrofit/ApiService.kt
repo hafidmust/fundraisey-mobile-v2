@@ -9,12 +9,12 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
-    @POST("login")
+    @POST("v1/login")
     fun login(
         @Body
         dataUser : LoginRequest
     ) : Call<LoginResponse>
 
-    @GET("loan/all")
+    @GET("v1/loan/all")
     fun getAllLoan() : Call<LoanResponse>
 }

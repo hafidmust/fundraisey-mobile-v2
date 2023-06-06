@@ -12,6 +12,15 @@ import com.hafidmust.fundraisey_v2.R
 import com.hafidmust.fundraisey_v2.data.response.DataItem
 
 class HomeAdapter(private val listLoan : List<DataItem>) : RecyclerView.Adapter<HomeAdapter.ListViewHolder>() {
+    private lateinit var onItemClickCallback : OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+    interface OnItemClickCallback {
+        fun onItemClicked(id : Int)
+    }
+
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageStartup = itemView.findViewById<ImageView>(R.id.iv_startup)
         private val tvStartup = itemView.findViewById<TextView>(R.id.tv_startup)
@@ -19,11 +28,11 @@ class HomeAdapter(private val listLoan : List<DataItem>) : RecyclerView.Adapter<
         private val tvAmount = itemView.findViewById<TextView>(R.id.tv_amount)
         private val tvDescription = itemView.findViewById<TextView>(R.id.tv_desc)
         private val pbMilestone = itemView.findViewById<ProgressBar>(R.id.pb_milestone)
-        private val tvCollected = itemView.findViewById<ProgressBar>(R.id.tv_collected)
-        private val tvRemaining = itemView.findViewById<ProgressBar>(R.id.tv_remaining_day)
+        private val tvCollected = itemView.findViewById<TextView>(R.id.tv_collected)
+        private val tvRemaining = itemView.findViewById<TextView>(R.id.tv_remaining_day)
 
         fun bindData(data : DataItem){
-            tvStartup.text = data.startupName
+            tvStartup.text = data.startup.name
             tvProject.text = data.name
             tvDescription.text = data.description
 
@@ -41,5 +50,9 @@ class HomeAdapter(private val listLoan : List<DataItem>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bindData(listLoan[position])
+
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listLoan[holder.adapterPosition].id)
+        }
     }
 }

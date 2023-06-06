@@ -2,6 +2,7 @@ package com.hafidmust.fundraisey_v2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -26,6 +27,16 @@ class MainActivity : AppCompatActivity() {
         val navController =navHostFragment.navController
         val navView : BottomNavigationView = findViewById(R.id.nav_view)
         navView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.homeFragment ||
+                destination.id == R.id.portfolioFragment ||
+                destination.id == R.id.historyFragment ||
+                destination.id == R.id.informationFragment){
+                navView.visibility = View.VISIBLE
+            }else {
+                navView.visibility = View.GONE
+            }
+        }
 
     }
 }
