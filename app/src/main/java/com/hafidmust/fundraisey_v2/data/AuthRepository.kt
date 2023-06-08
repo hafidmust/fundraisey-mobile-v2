@@ -16,7 +16,7 @@ class AuthRepository private constructor(
 ){
     private val result = MediatorLiveData<Result<LoginResponse>>()
     fun login(email : String, password : String) : LiveData<Result<LoginResponse>> {
-        result.value = Result.Loading
+//        result.value = Result.Loading
         val request = LoginRequest(
             email = email,
             password = password,
@@ -24,7 +24,7 @@ class AuthRepository private constructor(
             clientSecret = "password",
             clientId = "client-web"
         )
-        val client = ApiConfig.getApiService().login(request)
+        val client = apiService.login(request)
         client.enqueue(object : Callback<LoginResponse>{
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 val data = response.body()
@@ -34,9 +34,9 @@ class AuthRepository private constructor(
                     result.value = Result.Success(data)
 
 
-                } else if (data?.status == 400) {
+                } else {
                     //message error
-                    result.value = Result.Error(data.message)
+                    result.value = Result.Error("Email atau password salah")
                 }
             }
 

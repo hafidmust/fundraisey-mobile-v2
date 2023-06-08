@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                 when (result) {
                     is Result.Success -> startActivity(Intent(this, MainActivity::class.java))
                     is Result.Error -> Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
-                    is Result.Loading -> Toast.makeText(this, "loading", Toast.LENGTH_SHORT).show()
+                    is Result.Loading -> {}
                 }
             }
         }
