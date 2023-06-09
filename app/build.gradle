@@ -51,6 +51,12 @@ dependencies {
     //viewmodel & livedata
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    //datastore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 
     //navigation component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'

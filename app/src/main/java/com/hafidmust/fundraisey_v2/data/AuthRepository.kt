@@ -3,6 +3,7 @@ package com.hafidmust.fundraisey_v2.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import com.hafidmust.fundraisey_v2.data.preferences.DatastorePreferences
 import com.hafidmust.fundraisey_v2.data.request.LoginRequest
 import com.hafidmust.fundraisey_v2.data.response.LoginResponse
 import com.hafidmust.fundraisey_v2.data.retrofit.ApiConfig
@@ -12,9 +13,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AuthRepository private constructor(
-    private val apiService: ApiService
+    private val apiService: ApiService,
 ){
     private val result = MediatorLiveData<Result<LoginResponse>>()
+
     fun login(email : String, password : String) : LiveData<Result<LoginResponse>> {
 //        result.value = Result.Loading
         val request = LoginRequest(
@@ -47,11 +49,13 @@ class AuthRepository private constructor(
         return result
     }
 
+
+
     companion object {
         @Volatile
         private var instance : AuthRepository? = null
         fun getInstance(
-            apiService: ApiService
+            apiService: ApiService,
         ) : AuthRepository =
             instance ?: synchronized(this){
                 instance ?: AuthRepository(apiService)
