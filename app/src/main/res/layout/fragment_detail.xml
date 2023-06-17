@@ -222,6 +222,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/btn_fund_now"
         style="@style/CustomFilledButton"
         android:text="fund now"
         app:layout_constraintTop_toBottomOf="@id/cv_about_startup"

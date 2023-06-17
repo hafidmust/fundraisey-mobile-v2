@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.hafidmust.fundraisey_v2.data.response.DataDetail
 import com.hafidmust.fundraisey_v2.databinding.FragmentDetailBinding
+import com.hafidmust.fundraisey_v2.ui.payment.PaymentFragmentArgs
 
 class DetailFragment : Fragment() {
 
@@ -37,6 +39,12 @@ class DetailFragment : Fragment() {
         id?.let { viewmodel.getDetailById(it) }
         viewmodel.dataDetail.observe(viewLifecycleOwner){
             setupView(it)
+        }
+
+        binding.btnFundNow.setOnClickListener {
+            val toPaymentFragmentDirections = DetailFragmentDirections.actionDetailFragmentToPaymentFragment()
+            toPaymentFragmentDirections.loanId = 4
+            it.findNavController().navigate(toPaymentFragmentDirections)
         }
 
     }
