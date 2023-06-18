@@ -51,5 +51,26 @@
             android:name="loanId"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_paymentFragment_to_paymentDetailFragment"
+            app:destination="@id/paymentDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentDetailFragment"
+        android:name="com.hafidmust.fundraisey_v2.ui.payment_detail.PaymentDetailFragment"
+        android:label="fragment_payment_detail"
+        tools:layout="@layout/fragment_payment_detail" >
+        <argument
+            android:name="loanId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="amount"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="paymentAgentId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

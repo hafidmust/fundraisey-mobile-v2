@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hafidmust.fundraisey_v2.R
 import com.hafidmust.fundraisey_v2.databinding.FragmentPaymentBinding
@@ -42,11 +43,16 @@ class PaymentFragment : Fragment() {
         Log.d("loanId payment : ", "$loanId")
 
         binding.btnPay.setOnClickListener {
+            val toDetailPayment = PaymentFragmentDirections.actionPaymentFragmentToPaymentDetailFragment()
+            toDetailPayment.loanId = loanId
+            toDetailPayment.paymentAgentId = 1
+            toDetailPayment.amount = 1000000
+            view.findNavController().navigate(toDetailPayment)
 
-                runBlocking {
-                    delay(1000L)
-                    showDialog()
-                }
+//                runBlocking {
+//                    delay(1000L)
+//                    showDialog()
+//                }
 
         }
     }
