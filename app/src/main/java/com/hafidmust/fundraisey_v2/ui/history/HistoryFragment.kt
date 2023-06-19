@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hafidmust.fundraisey_v2.R
+import com.hafidmust.fundraisey_v2.databinding.FragmentHistoryBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +25,11 @@ class HistoryFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var _binding : FragmentHistoryBinding? = null
+    private val binding get() = _binding!!
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +43,21 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        _binding = FragmentHistoryBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
+        viewModel.listHistory.observe(viewLifecycleOwner){
+            val historyAdapter = it?.let { it1 -> HistoryAdapter(it1) }
+            binding.rvHistory.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = historyAdapter
+            }
+        }
     }
 
     companion object {
@@ -56,5 +78,10 @@ class HistoryFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
