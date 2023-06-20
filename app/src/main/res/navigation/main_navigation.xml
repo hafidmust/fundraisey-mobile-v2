@@ -23,7 +23,11 @@
         android:id="@+id/historyFragment"
         android:name="com.hafidmust.fundraisey_v2.ui.history.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_historyDetailFragment"
+            app:destination="@id/historyDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/informationFragment"
         android:name="com.hafidmust.fundraisey_v2.ui.information.InformationFragment"
@@ -70,6 +74,16 @@
             android:defaultValue="0" />
         <argument
             android:name="paymentAgentId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyDetailFragment"
+        android:name="com.hafidmust.fundraisey_v2.ui.history_detail.HistoryDetailFragment"
+        android:label="fragment_history_detail"
+        tools:layout="@layout/fragment_history_detail" >
+        <argument
+            android:name="id"
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>

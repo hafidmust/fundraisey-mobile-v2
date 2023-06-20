@@ -1,63 +1,362 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.history_detail.HistoryDetailFragment">
 
-    <TextView
-        android:id="@+id/tv_project"
-        style="@style/TextBlueHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Project funding"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_nominal"
-        style="@style/TextBold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Rp 50.000"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_project" />
+        <TextView
+            android:id="@+id/tv_project"
+            style="@style/TextBlueHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Project funding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/lbl_payment_deadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Loan request"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_nominal" />
+        <TextView
+            android:id="@+id/tv_nominal"
+            style="@style/TextBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Rp 50.000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_project" />
 
-    <TextView
-        android:id="@+id/tv_payment_deadline"
-        style="@style/TextBold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Payment process"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_nominal" />
+        <TextView
+            android:id="@+id/lbl_payment_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loan request"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nominal" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rp 5.000.000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lbl_payment_deadline" />
+        <TextView
+            android:id="@+id/tv_payment_deadline"
+            style="@style/TextBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment process"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nominal" />
 
-    <TextView
-        android:id="@+id/tv_campaign_deadline"
-        style="@style/TextBold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sunday, 19 Oct 2022"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_payment_deadline" />
+        <TextView
+            android:id="@+id/tv_loan_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 5.000.000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_payment_deadline" />
+
+        <TextView
+            android:id="@+id/tv_campaign_deadline"
+            style="@style/TextBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunday, 19 Oct 2022"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_payment_deadline" />
+
+        <TableLayout
+            android:id="@+id/table_returning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_loan_request">
+
+            <TableRow>
+
+                <TextView android:text="Returning method" />
+
+                <TextView
+                    android:gravity="end"
+                    android:text="6 months installment" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView android:text="Interest" />
+
+                <TextView
+                    android:gravity="end"
+                    android:text="15%" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/lb_header_virtual"
+            style="@style/TextBlueHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:text="BCA Virtual Account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table_returning" />
+
+        <TextView
+            android:id="@+id/lb_va"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="18dp"
+            android:text="Virtual Account Number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lb_header_virtual" />
+
+        <TextView
+            android:id="@+id/tv_va"
+            style="@style/TextBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:text="1394837285038294"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lb_va" />
+
+        <TextView
+            android:id="@+id/tv_copy_va"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Copy"
+            android:textColor="@color/primary700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lb_va" />
+
+        <TextView
+            android:id="@+id/lb_nominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="18dp"
+            android:text="Payment Nominal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_va" />
+
+        <TextView
+            android:id="@+id/tv_nominal_pay"
+            style="@style/TextBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Rp 50.000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lb_nominal" />
+
+        <TextView
+            android:id="@+id/tv_copy_nominal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Copy"
+            android:textColor="@color/primary700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lb_nominal" />
+
+        <TextView
+            android:id="@+id/lbl_return_information"
+            style="@style/TextBlueHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return Information"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nominal_pay" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/pb_return"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="70"
+            app:layout_constraintTop_toBottomOf="@id/lbl_return_information" />
+
+        <TextView
+            android:id="@+id/lbl_loan_refund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loan refund"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pb_return" />
+
+        <TextView
+            android:id="@+id/label_refund_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refund method"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pb_return" />
+
+        <TextView
+            android:id="@+id/tv_loan_refund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 57.500.000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_loan_refund" />
+
+        <TextView
+            android:id="@+id/tv_refund_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6 months installment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_loan_refund" />
+
+        <FrameLayout
+            android:id="@+id/fl_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary700"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_loan_refund">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Late Payment"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/lb_loan_information"
+            style="@style/TextBlueHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loan Information"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fl_status" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_loan_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lb_loan_information">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="22dp">
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/lb_loan_app"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_logo"
+                    android:text="Loan Application" />
+
+                <TextView
+                    style="@style/TextBlueHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lb_loan_app"
+                    android:layout_toRightOf="@id/iv_logo"
+                    android:text="Star Track inc." />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_funding_needs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_loan_app">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="22dp">
+
+                <TextView
+                    android:id="@+id/lb_funding_need"
+                    style="@style/TextBlueHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Funding Needs" />
+
+                <TextView
+                    android:id="@+id/tv_funding_needs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lb_funding_need"
+                    android:text="@string/value_funding_needs" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_about_startup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_funding_needs">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="22dp">
+
+                <TextView
+                    android:id="@+id/lb_startup"
+                    style="@style/TextBlueHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About Startup" />
+
+                <TextView
+                    android:id="@+id/tv_about_startup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lb_startup"
+                    android:text="@string/value_about_startup" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_about_startup"
+                    android:src="@drawable/sample_startup" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

@@ -8,6 +8,11 @@ import com.hafidmust.fundraisey_v2.databinding.ItemHistoryBinding
 
 class HistoryAdapter(private val listHistory: List<ContentItem>) :
     RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+    private var itemClickListener : ItemClickListener? = null
+    fun setItemClickListener(itemClickListener: ItemClickListener){
+        this.itemClickListener = itemClickListener
+    }
+
 
     inner class HistoryViewHolder(private val binding: ItemHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -26,5 +31,12 @@ class HistoryAdapter(private val listHistory: List<ContentItem>) :
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.bind(listHistory[position])
+        holder.itemView.setOnClickListener {
+            listHistory[holder.adapterPosition].id?.let { it1 -> itemClickListener?.onItemClick(it1) }
+        }
+    }
+
+    interface ItemClickListener {
+        fun onItemClick(id : Int)
     }
 }

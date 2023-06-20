@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hafidmust.fundraisey_v2.R
 import com.hafidmust.fundraisey_v2.databinding.FragmentHistoryBinding
@@ -57,6 +58,13 @@ class HistoryFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = historyAdapter
             }
+            historyAdapter?.setItemClickListener(object : HistoryAdapter.ItemClickListener{
+                override fun onItemClick(id: Int) {
+                    val toDetailHistoryFragmentDirections = HistoryFragmentDirections.actionHistoryFragmentToHistoryDetailFragment()
+                    toDetailHistoryFragmentDirections.id = id
+                    view.findNavController().navigate(toDetailHistoryFragmentDirections)
+                }
+            })
         }
     }
 

@@ -7,7 +7,6 @@
     android:layout_marginHorizontal="16dp"
     tools:context=".ui.detail.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/tv_project"
         style="@style/TextBlueHeader"
