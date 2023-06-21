@@ -38,6 +38,17 @@ class InformationFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_information, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val acc1 : AccordionView = view.findViewById(R.id.acc1)
+
+
+        acc1.setHeaderText("How does FundRaisey work ?")
+        acc1.setContentText("FundRaisey is a marketplace that is a space for borrowers and lenders to help each other. Our job is to make sure the borrower's funds are valid and eligible to be given a loan from the lender.\n" +
+                "\n" +
+                "Lenders will benefit when the borrower has benefited from the project they submitted at the beginning of the loan with a loan period of 2 years")
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

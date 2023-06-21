@@ -1,14 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.portfolio.PortfolioFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/lbl_balance"
+            style="@style/TextBlueHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total balance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 5.000.000 / Rp 7.000.000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_balance" />
+
+        <Button
+            android:id="@+id/btn_withdraw"
+            style="@style/CustomFilledButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Withdraw"
+            app:layout_constraintTop_toBottomOf="@+id/tv_balance" />
+
+        <TextView
+            android:id="@+id/lbl_portfolio_details"
+            style="@style/TextBlueHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Portfolio details"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_withdraw" />
+
+        <TableLayout
+            android:id="@+id/table_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:stretchColumns="1"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_portfolio_details">
+
+            <TableRow>
+
+                <TextView
+                    style="@style/TextBold"
+                    android:text="Total withdraw this month" />
+
+                <TextView
+                    style="@style/TextBold"
+                    android:gravity="end"
+                    android:text="Rp 10.000.000" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/TextBold"
+                    android:text="Total funding" />
+
+                <TextView
+                    style="@style/TextBold"
+                    android:gravity="end"
+                    android:text="Rp 7.000.000" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/TextBold"
+                    android:text="Upcoming returns" />
+
+                <TextView
+                    style="@style/TextBold"
+                    android:gravity="end"
+                    android:text="Rp 2.000.000" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/TextBold"
+                    android:text="Loan amount" />
+
+                <TextView
+                    style="@style/TextBold"
+                    android:gravity="end"
+                    android:text="4 Startup" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/lbl_loan_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loan Details"
+            app:layout_constraintTop_toBottomOf="@id/table_layout"
+            style="@style/TextBlueHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_portfolio"
+            app:layout_constraintTop_toBottomOf="@id/lbl_loan_details" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
