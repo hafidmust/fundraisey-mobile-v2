@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hafidmust.fundraisey_v2.R
 import com.hafidmust.fundraisey_v2.data.preferences.DatastorePreferences
 import com.hafidmust.fundraisey_v2.data.preferences.dataStore
+import com.hafidmust.fundraisey_v2.databinding.FragmentHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +31,9 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var pref : DatastorePreferences
+    private lateinit var pref: DatastorePreferences
+    private lateinit var _binding: FragmentHomeBinding
+    private val binding get() = _binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,35 +48,50 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val rvMain = view.findViewById<RecyclerView>(R.id.rv_loan)
-        pref  = DatastorePreferences.getInstance(requireContext().dataStore)
-        pref.getToken().asLiveData().observe(viewLifecycleOwner){
-            Log.d("token" , it)
+        pref = DatastorePreferences.getInstance(requireContext().dataStore)
+        pref.getToken().asLiveData().observe(viewLifecycleOwner) {
+            Log.d("token", it)
         }
         val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        viewModel.data.observe(viewLifecycleOwner){
+        viewModel.data.observe(viewLifecycleOwner) {
             val homeAdapter = HomeAdapter(it)
             rvMain.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = homeAdapter
             }
-            homeAdapter.setOnItemClickCallback(object : HomeAdapter.OnItemClickCallback{
+            homeAdapter.setOnItemClickCallback(object : HomeAdapter.OnItemClickCallback {
                 override fun onItemClicked(id: Int) {
                     Log.d("data id = ", id.toString())
 //                    Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_detailFragment)
-                    val toDetailFragment = HomeFragmentDirections.actionHomeFragmentToDetailFragment()
+                    val toDetailFragment =
+                        HomeFragmentDirections.actionHomeFragmentToDetailFragment()
                     toDetailFragment.id = id
                     view.findNavController().navigate(toDetailFragment)
                 }
             })
         }
 
+        binding.appBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.toProfile -> {
+                    val toProfile = HomeFragmentDirections.actionHomeFragmentToProfileFragment()
+                    view.findNavController().navigate(toProfile)
+                    true
+                }
+
+                else -> false
+            }
+        }
+
     }
+
 
     companion object {
         /**

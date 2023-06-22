@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.hafidmust.fundraisey_v2.R
+import com.hafidmust.fundraisey_v2.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
+
+    private lateinit var _binding: FragmentProfileBinding
+    private val binding get() = _binding
 
     companion object {
         fun newInstance() = ProfileFragment()
@@ -20,7 +25,26 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.cvPersonalData.setOnClickListener {
+            val toPersonalDataFragment =
+                ProfileFragmentDirections.actionProfileFragmentToPersonalDataFragment()
+            view.findNavController().navigate(toPersonalDataFragment)
+        }
+
+        binding.changePassword.setOnClickListener {
+            val toChangePasswordFragment =
+                ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment()
+            view.findNavController().navigate(toChangePasswordFragment)
+        }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

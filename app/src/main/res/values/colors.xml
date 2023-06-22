@@ -3,5 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary700">#FF1976D2</color>
+    <color name="primary100">#E4F2FF</color>
     <color name="secondary600">#FFFBD961</color>
+    <color name="neutral600">#5F5F5F</color>
 </resources>
