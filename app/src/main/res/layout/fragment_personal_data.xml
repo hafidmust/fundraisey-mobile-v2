@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.personal_data.PersonalDataFragment">
+    tools:context=".presentation.profile.personal_data.PersonalDataFragment">
 
     <ScrollView
         android:layout_width="match_parent"

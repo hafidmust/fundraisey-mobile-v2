@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.home.HomeFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/portfolioFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.portfolio.PortfolioFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.portfolio.PortfolioFragment"
         android:label="fragment_portfolio"
         tools:layout="@layout/fragment_portfolio" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.history.HistoryFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action
@@ -33,12 +33,12 @@
     </fragment>
     <fragment
         android:id="@+id/informationFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.information.InformationFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.information.InformationFragment"
         android:label="fragment_information"
         tools:layout="@layout/fragment_information" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.detail.DetailFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <argument
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.payment.PaymentFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.payment.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" >
         <argument
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentDetailFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.payment_detail.PaymentDetailFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.payment_detail.PaymentDetailFragment"
         android:label="fragment_payment_detail"
         tools:layout="@layout/fragment_payment_detail" >
         <argument
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyDetailFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.history_detail.HistoryDetailFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.history_detail.HistoryDetailFragment"
         android:label="fragment_history_detail"
         tools:layout="@layout/fragment_history_detail" >
         <argument
@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.profile.ProfileFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -104,12 +104,12 @@
     </fragment>
     <fragment
         android:id="@+id/personalDataFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.profile.personal_data.PersonalDataFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.profile.personal_data.PersonalDataFragment"
         android:label="fragment_personal_data"
         tools:layout="@layout/fragment_personal_data" />
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.hafidmust.fundraisey_v2.ui.profile.change_password.ChangePasswordFragment"
+        android:name="com.hafidmust.fundraisey_v2.presentation.profile.change_password.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
 </navigation>

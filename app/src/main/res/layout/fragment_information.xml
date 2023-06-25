@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.information.InformationFragment">
+    tools:context=".presentation.information.InformationFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.hafidmust.fundraisey_v2.ui.information.AccordionView
+        <com.hafidmust.fundraisey_v2.presentation.information.AccordionView
             android:id="@+id/acc1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
