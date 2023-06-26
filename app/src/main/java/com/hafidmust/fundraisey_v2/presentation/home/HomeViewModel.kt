@@ -2,8 +2,8 @@ package com.hafidmust.fundraisey_v2.presentation.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.hafidmust.fundraisey_v2.data.source.remote.retrofit.response.DataItem
-import com.hafidmust.fundraisey_v2.data.source.remote.retrofit.response.LoanResponse
+import com.hafidmust.fundraisey_v2.data.source.remote.response.DataItem
+import com.hafidmust.fundraisey_v2.data.source.remote.response.LoanResponse
 import com.hafidmust.fundraisey_v2.data.source.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback

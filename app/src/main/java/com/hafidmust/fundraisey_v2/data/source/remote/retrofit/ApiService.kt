@@ -1,9 +1,11 @@
 package com.hafidmust.fundraisey_v2.data.source.remote.retrofit
 
 import com.hafidmust.fundraisey_v2.data.request.LoginRequest
+import com.hafidmust.fundraisey_v2.data.request.RegisterRequest
 import com.hafidmust.fundraisey_v2.data.source.remote.retrofit.response.DetailLoanResponse
 import com.hafidmust.fundraisey_v2.data.source.remote.retrofit.response.HistoryResponse
-import com.hafidmust.fundraisey_v2.data.source.remote.retrofit.response.LoanResponse
+import com.hafidmust.fundraisey_v2.data.source.remote.response.LoanResponse
+import com.hafidmust.fundraisey_v2.data.source.remote.response.RegisterResponse
 import com.hafidmust.fundraisey_v2.data.source.remote.retrofit.response.LoginResponse
 import retrofit2.Call
 import retrofit2.http.Body
@@ -19,6 +21,11 @@ interface ApiService {
         @Body
         dataUser: LoginRequest
     ): LoginResponse
+
+    @POST("v1/register-investor")
+    suspend fun register(
+        @Body request: RegisterRequest
+    ) : RegisterResponse
 
     @GET("v1/loan/all")
     fun getAllLoan(): Call<LoanResponse>

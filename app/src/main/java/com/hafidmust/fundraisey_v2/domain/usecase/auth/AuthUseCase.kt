@@ -7,4 +7,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface AuthUseCase {
     fun login(email : String, password : String) : Flow<Result<Login>>
+
+    fun register(
+        email: String,
+        password: String,
+        citizenId: String,
+        fullName: String,
+        gender: String,
+        phoneNumber: String,
+        dateOfBirth: String
+    ) : Flow<Result<Register>>
+
 }

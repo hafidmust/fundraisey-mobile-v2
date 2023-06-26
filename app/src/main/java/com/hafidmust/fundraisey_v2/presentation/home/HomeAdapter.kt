@@ -8,7 +8,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hafidmust.fundraisey_v2.R
-import com.hafidmust.fundraisey_v2.data.source.remote.retrofit.response.DataItem
+import com.hafidmust.fundraisey_v2.data.source.remote.response.DataItem
 
 class HomeAdapter(private val listLoan : List<DataItem>) : RecyclerView.Adapter<HomeAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback : OnItemClickCallback

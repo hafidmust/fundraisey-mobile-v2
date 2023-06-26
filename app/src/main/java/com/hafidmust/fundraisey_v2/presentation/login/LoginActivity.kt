@@ -11,6 +11,7 @@ import com.hafidmust.fundraisey_v2.MainActivity
 import com.hafidmust.fundraisey_v2.data.preferences.DatastorePreferences
 import com.hafidmust.fundraisey_v2.data.preferences.dataStore
 import com.hafidmust.fundraisey_v2.databinding.ActivityLoginBinding
+import com.hafidmust.fundraisey_v2.presentation.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -61,6 +62,10 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        binding.tvDontHaveAcc.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
         }
 
         //to Main Activity / dashboard
